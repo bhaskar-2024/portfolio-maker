@@ -8,7 +8,7 @@ const HomePage = () => {
       <div className="max-w-4xl mx-auto flex-grow flex flex-col sm:flex-row items-center justify-center">
         <div className="bg-white rounded-lg shadow-md overflow-hidden sm:w-1/2">
           <img
-            src={"portfolio.png"}
+            src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8NYnGDqrQm-gbf4fbXkaMBzmVLlf2rZdOLA&s"}
             alt="Portfolio"
             className="w-full h-auto"
           />

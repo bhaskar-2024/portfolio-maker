@@ -34,7 +34,7 @@ function ProfilePage() {
 
   const logoutHandler = async () => {
     try {
-      const response = await axios.post("http://localhost:8000/users/logout" , {withCredentials : true})
+      const response = await axios.post("/api/users/logout" , {withCredentials : true})
       if(response) {
         navigate("/")
         dispatch(storeLogout());

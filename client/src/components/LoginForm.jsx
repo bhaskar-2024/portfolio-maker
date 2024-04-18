@@ -9,7 +9,7 @@ function LoginForm() {
   
     const {register , handleSubmit , reset } = useForm();
     const [loading , setLoading] = useState(false)
-    const loginUrl = "/api/users/login"
+    const loginUrl = "https://portfolio-maker-h2rf.onrender.com/api/users/login"
     const navigate = useNavigate()
     const dispatch = useDispatch()
 

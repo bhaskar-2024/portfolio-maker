@@ -24,7 +24,7 @@ const UpdateImage = ({target , open , onClose}) => {
         formData.append(target, selectedFile);
 
         const updatedData = await axios.post(
-            `/api/users/update-${target.toLowerCase()}`,
+            `https://portfolio-maker-h2rf.onrender.com/api/users/update-${target.toLowerCase()}`,
             formData,
             {
                 headers: {

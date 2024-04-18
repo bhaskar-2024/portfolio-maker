@@ -31,11 +31,12 @@ function ProfilePage() {
   };
 
  
-
+  axios.defaults.withCredentials = true;
   const logoutHandler = async () => {
     try {
-      const response = await axios.post("/api/users/logout" , {withCredentials : true})
-      if(response) {
+      const response = await axios.post("https://portfolio-maker-h2rf.onrender.com/api/users/logout" , {withCredentials : true})
+      console.log(response)
+      if(response.ok) {
         navigate("/")
         dispatch(storeLogout());
       }

@@ -39,13 +39,13 @@ function PasswordForm({ open, onClose }) {
     } else {
       try {
         const newPasswordData = await axios.post(
-          "/api/users/change-password", formData ,
+          "https://portfolio-maker-h2rf.onrender.com/api/users/change-password", formData ,
           { withCredentials: true }
         )
         if (newPasswordData) {
           console.log(newPasswordData);
           const logoutUser = await axios.post(
-            "/api/users/logout",
+            "https://portfolio-maker-h2rf.onrender.com/api/users/logout",
             { withCredentials: true }
           );
           if (logoutUser) {

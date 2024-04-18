@@ -14,7 +14,7 @@ function UpdateDetails() {
 
     const submit = async(data) => {
         try {
-            const updatedData = await axios.post("/api/users/update-account-details" , data , {withCredentials : true});
+            const updatedData = await axios.post("https://portfolio-maker-h2rf.onrender.com/api/users/update-account-details" , data , {withCredentials : true});
             if(updatedData) {console.log("updated data is --- " , updatedData); 
             dispatch(storeLogin(updatedData.data.data))
             navigate("/profile")

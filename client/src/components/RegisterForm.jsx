@@ -8,7 +8,7 @@ function RegisterForm() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const { register, handleSubmit, reset } = useForm();
-  const registerURL = "/api/users/register";
+  const registerURL = "https://portfolio-maker-h2rf.onrender.com/api/users/register";
   const [loading , setLoading] = useState(false)
   
   const submit = async (data) => {

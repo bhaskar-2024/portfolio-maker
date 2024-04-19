@@ -100,13 +100,15 @@ const loginUser = asyncHandler(async (req , res) => {
 
     const options = {
         httpOnly: true,
-        secure: false
+        secure: true,
+        SameSite : "None",
+        partitioned : "true"
     }
 
     return res
     .status(200)
-    .cookie("accessToken", accessToken, options , { SameSite: 'None', secure: true })
-    .cookie("refreshToken", refreshToken, options , { SameSite: 'None', secure: true })
+    .cookie("accessToken", accessToken, options )
+    .cookie("refreshToken", refreshToken, options )
     .json(
         new ApiResponse(
             200, 
@@ -135,15 +137,16 @@ const logoutUser = asyncHandler(async (req , res) => {
 
     const options = {
         httpOnly: true,
-        secure: true
+        secure: true,
+        SameSite : "None",
+        partitioned : "true"
     }
-
     return res
     .status(200)
     .clearCookie("accessToken", options , { SameSite: 'None', secure: true })
     .clearCookie("refreshToken", options , { SameSite: 'None', secure: true })
     .json(new ApiResponse(200, {}, "User logged Out"))
-})
+})  
 
 const changeCurrentPassword = asyncHandler(async(req, res) => {
     const {oldPassword, newPassword} = req.body

@@ -4,7 +4,7 @@ import { ApiError } from "../utils/Apierror.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { deleteFromCloudinary, uploadOnCloudinary } from "../utils/cloudinary.js";
 import { extractIdentifierFromURL } from "../utils/extractPublicID.js";
-
+import cookie from "cookie"
 
 const generateAccessAndRefereshTokens = async(userId) =>{
     try {
@@ -101,7 +101,7 @@ const loginUser = asyncHandler(async (req , res) => {
     const options = {
         httpOnly: true,
         secure: true,
-        SameSite : "None",
+        SameSite : "none",
         partitioned : "true"
     }
 
@@ -138,13 +138,13 @@ const logoutUser = asyncHandler(async (req , res) => {
     const options = {
         httpOnly: true,
         secure: true,
-        SameSite : "None",
+        SameSite : "none",
         partitioned : "true"
     }
     return res
     .status(200)
-    .clearCookie("accessToken", options , { SameSite: 'None', secure: true })
-    .clearCookie("refreshToken", options , { SameSite: 'None', secure: true })
+    .clearCookie("accessToken", options )
+    .clearCookie("refreshToken", options )
     .json(new ApiResponse(200, {}, "User logged Out"))
 })  
 

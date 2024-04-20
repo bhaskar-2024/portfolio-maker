@@ -99,25 +99,24 @@ const loginUser = asyncHandler(async (req , res) => {
     const loggedInUser = await User.findById(user._id).select("-Password -refreshToken")
 
     const options = {
+        maxAge: 86400000, // Cookie expires in 1 day (in milliseconds)
         httpOnly: true,
         secure: true,
-        SameSite : "none",
-        partitioned : "true"
-    }
+        SameSite: "None" // Correct capitalization
+      };
 
-    return res
-    .status(200)
-    .cookie("accessToken", accessToken, options )
-    .cookie("refreshToken", refreshToken, options )
-    .json(
-        new ApiResponse(
-            200, 
-            {
-                user: loggedInUser, accessToken, refreshToken
-            },
-            "User logged In Successfully"
-        )
-    )
+    res.cookie("accessToken", accessToken, options);
+    res.cookie("refreshToken", refreshToken, options);
+
+    res.status(200).json({
+        success: true,
+        message: "User logged in successfully",
+        data: {
+          user: loggedInUser,
+          accessToken,
+          refreshToken
+        }
+      });
     
 })
 
@@ -136,16 +135,15 @@ const logoutUser = asyncHandler(async (req , res) => {
     )
 
     const options = {
-        httpOnly: true,
-        secure: true,
-        SameSite : "none",
-        partitioned : "true"
-    }
-    return res
-    .status(200)
-    .clearCookie("accessToken", options )
-    .clearCookie("refreshToken", options )
-    .json(new ApiResponse(200, {}, "User logged Out"))
+    httpOnly: true,
+    secure: true,
+    SameSite: "None"
+  };
+  res.clearCookie("accessToken", options);
+  res.clearCookie("refreshToken", options);
+
+  // Send a simple JSON response indicating successful logout
+  res.status(200).json({ success: true, message: "User logged out successfully" });
 })  
 
 const changeCurrentPassword = asyncHandler(async(req, res) => {

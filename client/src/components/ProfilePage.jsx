@@ -36,7 +36,7 @@ function ProfilePage() {
     try {
       const response = await axios.post("https://portfolio-maker-h2rf.onrender.com/api/users/logout" , {withCredentials : true})
       console.log(response)
-      if(response.success) {
+      if(response.data.success) {
         navigate("/")
         dispatch(storeLogout());
       } else {

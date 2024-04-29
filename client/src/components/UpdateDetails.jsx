@@ -1,7 +1,7 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { storeLogin } from '../store/authSlice';
 import { useNavigate } from 'react-router-dom';
 
@@ -9,8 +9,15 @@ function UpdateDetails() {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    
     const {handleSubmit , register , reset } = useForm()
+    const userStatus = useSelector((state) => state.auth.status)
+
+    if(!userStatus) {
+    
+      return (
+        <div className="h-screen w-screen flex justify-center items-center"> Please <span className="mx-2 text-lg font-bold cursor-pointer" onClick={() => navigate("/login")}> Login </span> to view this page...</div>
+      )
+    }
 
     const submit = async(data) => {
         try {

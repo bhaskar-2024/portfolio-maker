@@ -15,6 +15,14 @@ function PasswordForm({ open, onClose }) {
     oldPassword: "",
   });
   const [showPassword, setShowPassword] = useState(false);
+  const userStatus = useSelector((state) => state.auth.status)
+
+  if(!userStatus) {
+  
+    return (
+      <div className="h-screen w-screen flex justify-center items-center"> Please <span className="mx-2 text-lg font-bold cursor-pointer" onClick={() => navigate("/login")}> Login </span> to view this page...</div>
+    )
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -43,7 +51,7 @@ function PasswordForm({ open, onClose }) {
           { withCredentials: true }
         )
         if (newPasswordData) {
-          console.log(newPasswordData);
+          // console.log(newPasswordData);
           const logoutUser = await axios.post(
             "https://portfolio-maker-h2rf.onrender.com/api/users/logout",
             { withCredentials: true }
@@ -57,7 +65,7 @@ function PasswordForm({ open, onClose }) {
       } catch (error) {
         console.log("error changing password", error);
       }
-      console.log(formData);
+      // console.log(formData);
     }
   };
 

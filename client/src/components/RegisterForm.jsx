@@ -31,7 +31,7 @@ function RegisterForm() {
       });
       if(userData) {
         setLoading(false)
-        console.log(userData)
+        // console.log(userData)
         navigate('/login')
       }
       // console.log("User created:", userData.data);

@@ -10,6 +10,14 @@ const UpdateImage = ({target , open , onClose}) => {
   const [selectedFile, setSelectedFile] = useState("");
   const navigate = useNavigate()
   const userdata = useSelector((state) => state.auth.userdata)
+  const userStatus = useSelector((state) => state.auth.status)
+
+  if(!userStatus) {
+  
+    return (
+      <div className="h-screen w-screen flex justify-center items-center"> Please <span className="mx-2 text-lg font-bold cursor-pointer" onClick={() => navigate("/login")}> Login </span> to view this page...</div>
+    )
+  }
   
     if(!open) return null
     

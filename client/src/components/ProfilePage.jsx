@@ -20,7 +20,7 @@ function ProfilePage() {
   if(!userStatus) {
     
     return (
-      <div className="h-screen w-screen flex justify-center items-center"> Please <span onClick={() => navigate("/login")}> Login </span> to view this page...</div>
+      <div className="h-screen w-screen flex justify-center items-center"> Please <span className="mx-2 text-lg font-bold cursor-pointer" onClick={() => navigate("/login")}> Login </span> to view this page...</div>
     )
   }
   

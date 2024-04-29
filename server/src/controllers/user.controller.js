@@ -102,7 +102,8 @@ const loginUser = asyncHandler(async (req , res) => {
         maxAge: 86400000, // Cookie expires in 1 day (in milliseconds)
         httpOnly: true,
         secure: true,
-        SameSite: "None" // Correct capitalization
+        sameSite: "None" ,
+        partitioned : true// Correct capitalization
       };
 
     res.cookie("accessToken", accessToken, options);
@@ -137,7 +138,8 @@ const logoutUser = asyncHandler(async (req , res) => {
     const options = {
     httpOnly: true,
     secure: true,
-    SameSite: "None"
+    sameSite: "None",
+    partitioned : true
   };
   res.clearCookie("accessToken", options);
   res.clearCookie("refreshToken", options);
